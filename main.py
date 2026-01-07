@@ -102,8 +102,9 @@ class FolderView(View):
         key = [item.attrib.get("Changekey") for item in doc.findall(".//t:ItemId", namespaces=namespaces)]
         subjects = doc.findall(".//t:Subject", namespaces)
         subjects = [e.text for e in subjects]
-        names = [e.text for e in doc.findall(".//t:From/t:Mailbox/t:Name", namespaces)]
-        emails = [e.text for e in doc.findall(".//t:From/t:Mailbox/t:EmailAddress", namespaces)]
+        names = [e.text for e in doc.findall(".//t:Mailbox/t:Name", namespaces)]
+        emails = [e.text for e in doc.findall(".//t:Mailbox/t:EmailAddress", namespaces)]
+
         for i, s in enumerate(subjects):
             print(f"[{i}] {s} [From] {names[i]} ({emails[i]})")
 
